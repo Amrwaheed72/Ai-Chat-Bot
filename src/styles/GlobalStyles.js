@@ -18,6 +18,44 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-800: #1f2937;
   --color-grey-900: #111827;
 
+  --color-neutral-950: oklch(0.985 0 0);
+  --color-neutral-900: oklch(0.97 0 0);
+  --color-neutral-800: oklch(0.922 0 0);
+  --color-neutral-700: oklch(0.87 0 0);
+  --color-neutral-600: oklch(0.708 0 0);
+  --color-neutral-500: oklch(0.556 0 0);
+  --color-neutral-400: oklch(0.439 0 0);
+  --color-neutral-300: oklch(0.371 0 0);
+  --color-neutral-200: oklch(0.269 0 0);
+  --color-neutral-100: oklch(0.205 0 0);
+  --color-neutral-50: oklch(0.145 0 0);
+
+  --color-stone-950: oklch(0.985 0.001 106.423);
+  --color-stone-900: oklch(0.97 0.001 106.424);
+  --color-stone-800: oklch(0.923 0.003 48.717);
+  --color-stone-700: oklch(0.869 0.005 56.366);
+  --color-stone-600: oklch(0.709 0.01 56.259);
+  --color-stone-500: oklch(0.553 0.013 58.071);
+  --color-stone-400: oklch(0.444 0.011 73.639);
+  --color-stone-300: oklch(0.374 0.01 67.558);
+  --color-stone-200: oklch(0.268 0.007 34.298);
+  --color-stone-100: oklch(0.216 0.006 56.043);
+  --color-stone-50: oklch(0.147 0.004 49.25);
+
+  --color-slate-950: oklch(0.984 0.003 247.858);
+  --color-slate-900: oklch(0.968 0.007 247.896);
+  --color-slate-800: oklch(0.929 0.013 255.508);
+  --color-slate-700: oklch(0.869 0.022 252.894);
+  --color-slate-600: oklch(0.704 0.04 256.788);
+  --color-slate-500: oklch(0.554 0.046 257.417);
+  --color-slate-400: oklch(0.446 0.043 257.281);
+  --color-slate-300: oklch(0.372 0.044 257.287);
+  --color-slate-200: oklch(0.279 0.041 260.031);
+  --color-slate-100: oklch(0.208 0.042 265.755);
+  --color-slate-50: oklch(0.129 0.042 264.695);
+
+
+
   --color-blue-100: #e0f2fe;
   --color-blue-700: #0369a1;
   --color-green-100: #dcfce7;
@@ -54,6 +92,44 @@ const GlobalStyles = createGlobalStyle`
 --color-grey-700: #e5e7eb;
 --color-grey-800: #f3f4f6;
 --color-grey-900: #f9fafb;
+
+
+
+--color-neutral-50: oklch(0.985 0 0);
+  --color-neutral-100: oklch(0.97 0 0);
+  --color-neutral-200: oklch(0.922 0 0);
+  --color-neutral-300: oklch(0.87 0 0);
+  --color-neutral-400: oklch(0.708 0 0);
+  --color-neutral-500: oklch(0.556 0 0);
+  --color-neutral-600: oklch(0.439 0 0);
+  --color-neutral-700: oklch(0.371 0 0);
+  --color-neutral-800: oklch(0.269 0 0);
+  --color-neutral-900: oklch(0.205 0 0);
+  --color-neutral-950: oklch(0.145 0 0);
+
+--color-stone-50: oklch(0.985 0.001 106.423);
+  --color-stone-100: oklch(0.97 0.001 106.424);
+  --color-stone-200: oklch(0.923 0.003 48.717);
+  --color-stone-300: oklch(0.869 0.005 56.366);
+  --color-stone-400: oklch(0.709 0.01 56.259);
+  --color-stone-500: oklch(0.553 0.013 58.071);
+  --color-stone-600: oklch(0.444 0.011 73.639);
+  --color-stone-700: oklch(0.374 0.01 67.558);
+  --color-stone-800: oklch(0.268 0.007 34.298);
+  --color-stone-900: oklch(0.216 0.006 56.043);
+  --color-stone-950: oklch(0.147 0.004 49.25);
+
+  --color-slate-50: oklch(0.984 0.003 247.858);
+  --color-slate-100: oklch(0.968 0.007 247.896);
+  --color-slate-200: oklch(0.929 0.013 255.508);
+  --color-slate-300: oklch(0.869 0.022 252.894);
+  --color-slate-400: oklch(0.704 0.04 256.788);
+  --color-slate-500: oklch(0.554 0.046 257.417);
+  --color-slate-600: oklch(0.446 0.043 257.281);
+  --color-slate-700: oklch(0.372 0.044 257.287);
+  --color-slate-800: oklch(0.279 0.041 260.031);
+  --color-slate-900: oklch(0.208 0.042 265.755);
+  --color-slate-950: oklch(0.129 0.042 264.695);
 
 --color-blue-100: #075985;
 --color-blue-700: #e0f2fe;
@@ -105,7 +181,7 @@ const GlobalStyles = createGlobalStyle`
   margin: 0;
   outline: none;
   font-family: "Poppins", sans-serif;
-  color: var(--color-grey-700);
+  color: var(--color-grey-500);
 
   /* Creating animations for dark mode */
   transition: background-color 0.3s, border 0.3s;

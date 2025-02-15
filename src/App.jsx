@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import ChatBotStart from "./Components/ChatBotStart";
+import ChatBotStart from "./features/chatbotstart/ChatBotStart";
 import GlobalStyles from "./styles/GlobalStyles";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import { BrowserRouter, Navigate, replace, Route, Routes } from "react-router";
-import ChatBotApp from "./Components/ChatBotApp";
+import ChatBotApp from "./features/chatbotapp/ChatBotApp";
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
   place-items: center;
-  background-color: var(--color-grey-50);
+  background-color: var(--color-neutral-800);
 `;
 function App() {
   return (
@@ -18,11 +18,11 @@ function App() {
       <Container>
         <GlobalStyles />
         <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ChatBotStart />} />
-          <Route path="main" element={<ChatBotApp />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<ChatBotStart />} />
+            <Route path="main" element={<ChatBotApp />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
         </BrowserRouter>
       </Container>
     </DarkModeProvider>

@@ -17,25 +17,26 @@ const StyledStartPage = styled.div`
 `;
 const StyledHeader = styled.h1`
   font-size: 10rem;
-  color: var(--color-indigo-700);
+  color: var(--color-slate-100);
   text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   letter-spacing: 2rem;
+
 `;
 const StyledSmallHeader = styled.h3`
   margin-top: -3rem;
   font-size: 3rem;
-  color: var(--color-grey-900);
+  color: var(--color-slate-400);
   letter-spacing: 1rem;
 `;
 const Button = styled.button`
   width: 30rem;
   height: 15rem;
   background: linear-gradient(
-    120deg,
-    var(--color-indigo-700),
-    var(--color-indigo-100)
+    110deg,
+    var(--color-neutral-600),
+    var(--color-neutral-800)
   );
-  color: var(--color-grey-50);
+  color: var(--color-slate-100);
   border: none;
   border-radius: 1rem;
   font-size: 5rem;

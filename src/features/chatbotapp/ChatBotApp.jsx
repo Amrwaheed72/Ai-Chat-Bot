@@ -14,7 +14,7 @@ const StyledChatApp = styled.div`
   display: flex;
 `;
 const StyledChatList = styled.div`
-  width: 20%;
+  width: 18%;
   height: 100%;
   background-color: var(--color-neutral-950);
   padding: 1rem;
@@ -59,7 +59,7 @@ const H4 = styled.h4`
 `;
 
 const ChatWindow = styled.div`
-  width: 80%;
+  width: 82%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -207,7 +207,7 @@ function ChatBotApp() {
       </StyledChatList>
       <ChatWindow>
         <ChatWindowHeader>
-          <H1>EGYAi Chat Bot</H1>
+          <H1>EGYAi</H1>
           <DarkModeToggle />
           <StyledIcon onClick={() => navigate("/")}>
             <GoArrowRight size="3rem" stroke="var(--color-grey-600)" />

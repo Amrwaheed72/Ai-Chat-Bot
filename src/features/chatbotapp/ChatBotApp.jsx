@@ -8,6 +8,12 @@ const StyledChatApp = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+  @media (max-width:500px ) {
+width: 100%;
+}
 `;
 
 const API_KEY = import.meta.env.VITE_DEEPSEEK_API_KEY;
@@ -19,6 +25,31 @@ function ChatBotApp() {
   const [activeChat, setActiveChat] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
+  const [showChatList, setShowChatList] = useState(false);
+
+  function handleVisibilty() {
+    setShowChatList((showChatList)=>!showChatList)
+  }
+  useEffect(() => {
+    const storedChats = JSON.parse(localStorage.getItem("chats")) || [];
+    setChats(storedChats);
+    if (storedChats.length > 0) {
+      setActiveChat(storedChats[0].id);
+      setMessages(storedChats[0].messages); // Directly use messages from chats
+    }
+  }, []);
+
+  useEffect(() => {
+    const activeChatObj = chats.find((chat) => chat.id === activeChat);
+    setMessages(activeChatObj ? activeChatObj.messages : []);
+  }, [activeChat, chats]);
+
+  // useEffect(() => {
+  //   if (activeChat) {
+  //     const storedMessages = JSON.parse(localStorage.getItem(activeChat)) || [];
+  //     setMessages(storedMessages);
+  //   }
+  // }, [activeChat]);
 
   function handleInputChanges(e) {
     setInputValue(e.target.value);
@@ -35,14 +66,13 @@ function ChatBotApp() {
     } else {
       const updatedMessages = [...messages, newMessage];
       setMessages(updatedMessages);
+      localStorage.setItem(activeChat, JSON.stringify(updatedMessages));
       setInputValue("");
-      const updatedChats = chats.map((chat) => {
-        if (chat.id === activeChat) {
-          return { ...chat, messages: updatedMessages };
-        }
-        return chat;
-      });
+      const updatedChats = chats.map((chat) =>
+        chat.id === activeChat ? { ...chat, messages: updatedMessages } : chat
+      );
       setChats(updatedChats);
+      localStorage.setItem("chats", JSON.stringify(updatedChats));
       setIsTyping(true);
       const response = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -63,25 +93,7 @@ function ChatBotApp() {
           }),
         }
       );
-      //  fetch(
-      //   "https://api.openai.com/v1/chat/completions",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       Authorization: `Bearer ${API_KEY}`,
-      //     },
-      //     body: JSON.stringify({
-      //       model: "gpt-3.5-turbo",
-      //       messages: [
-      //         {
-      //           role: "user",
-      //           content: inputValue,
-      //         },
-      //       ],
-      //     }),
-      //   }
-      // );
+
       if (!response.ok) {
         throw new Error(
           `OpenAI API error: ${response.status} ${response.statusText}`
@@ -96,6 +108,10 @@ function ChatBotApp() {
       };
       const updatedMessagesWithResponse = [...updatedMessages, newResponse];
       setMessages(updatedMessagesWithResponse);
+      localStorage.setItem(
+        activeChat,
+        JSON.stringify(updatedMessagesWithResponse)
+      );
       setIsTyping(false);
       const updatedChatsWithResponse = chats.map((chat) => {
         if (chat.id === activeChat) {
@@ -107,7 +123,7 @@ function ChatBotApp() {
         return chat;
       });
       setChats(updatedChatsWithResponse);
-      console.log(newResponse);
+      localStorage.setItem("chats", JSON.stringify(updatedChatsWithResponse));
     }
   }
   function creatingNewChat() {
@@ -144,15 +160,12 @@ function ChatBotApp() {
     };
     const updatedChats = [newChat, ...chats];
     setChats(updatedChats);
+    localStorage.setItem("chats", JSON.stringify(updatedChats));
+    // localStorage.getItem(newChat.id, JSON.stringify(newChat.messages));
     setActiveChat(newChat.id);
   }
   creatingNewChat();
   // console.log(chats);
-
-  useEffect(() => {
-    const activeChatObj = chats.find((chat) => chat.id === activeChat);
-    setMessages(activeChatObj ? activeChatObj.messages : []);
-  }, [activeChat, chats]);
 
   function handleSelectChat(id) {
     setActiveChat(id);
@@ -161,6 +174,8 @@ function ChatBotApp() {
   function handleDeleteChat(id) {
     const updatedChat = chats.filter((chat) => chat.id !== id);
     setChats(updatedChat);
+    localStorage.setItem("chats", JSON.stringify(updatedChat));
+    localStorage.removeItem(id);
     if (id === activeChat) {
       const newActiveChat = updatedChat.length > 0 ? updatedChat[0].id : null;
       setActiveChat(newActiveChat);
@@ -177,6 +192,8 @@ function ChatBotApp() {
   return (
     <StyledChatApp>
       <ChatList
+      handleVisibilty={handleVisibilty}
+      showChatList={showChatList}
         chats={chats}
         createNewChat={createNewChat}
         activeChat={activeChat}
@@ -184,6 +201,7 @@ function ChatBotApp() {
         handleDeleteChat={handleDeleteChat}
       />
       <ChatWindow
+      handleVisibilty={handleVisibilty}
         setInputValue={setInputValue}
         isTyping={isTyping}
         sendMessage={sendMessage}

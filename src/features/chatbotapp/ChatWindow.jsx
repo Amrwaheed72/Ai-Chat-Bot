@@ -10,8 +10,15 @@ const StyledChatWindow = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width:900px ) {
+    width: 100%;
+  }
+  @media (max-width:500px ) {
+width: 100%;
+}
 `;
 function ChatWindow({
+  handleVisibilty,
   messages,
   inputValue,
   handleInputChanges,
@@ -28,7 +35,7 @@ function ChatWindow({
   }
   return (
     <StyledChatWindow>
-      <ChatWindowHeader />
+      <ChatWindowHeader handleVisibilty={handleVisibilty} />
       <MainChat
         messages={messages}
         isTyping={isTyping}

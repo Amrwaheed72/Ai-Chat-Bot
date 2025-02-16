@@ -13,6 +13,9 @@ const FormMessage = styled.form`
   box-shadow: 0 -0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   border-radius: 3rem;
   position: relative;
+  @media (max-width: 900px) {
+    width: 90%;
+  }
 `;
 const StyledInput = styled.input`
   height: 100%;
@@ -40,9 +43,13 @@ const SpecialStyledIcon = styled.div`
   justify-content: center;
 `;
 const PickerContainer = styled.div`
-position: absolute;
-bottom: 7rem;
-left: 8rem;
+  position: absolute;
+  bottom: 7rem;
+  left: 8rem;
+  @media (max-width: 500px) {
+    left: 1rem;
+    bottom: 7rem;
+  }
 `;
 
 function ChatInputForm({
@@ -70,11 +77,11 @@ function ChatInputForm({
           size="3rem"
           onClick={() => setShowEmojiPicker((prev) => !prev)}
         />
-      {showEmojiPicker && (
-        <PickerContainer>
-          <Picker data={data} onEmojiSelect={handleEmojiSelect} />
-        </PickerContainer>
-      )}
+        {showEmojiPicker && (
+          <PickerContainer>
+            <Picker data={data} onEmojiSelect={handleEmojiSelect} />
+          </PickerContainer>
+        )}
       </SpecialStyledIcon>
       <StyledInput
         value={inputValue}
@@ -82,7 +89,7 @@ function ChatInputForm({
         onKeyDown={handleKeyDown}
         type="text"
         placeholder="Type a message..."
-        onFocus={()=>setShowEmojiPicker(false)}
+        onFocus={() => setShowEmojiPicker(false)}
       ></StyledInput>
       <SpecialStyledIcon>
         <IoSendSharp size="3rem" onClick={sendMessage} />

@@ -87,6 +87,9 @@ const StyledMainChat = styled.div`
   margin: 0 auto;
   background-color: var(--color-neutral-950);
   overflow: auto;
+  @media (max-width:900px ) {
+    width: 80%;
+  }
 `;
 
 function MainChat({ messages, isTyping, chatEndRef }) {

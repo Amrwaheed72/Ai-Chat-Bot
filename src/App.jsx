@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ChatBotStart from "./features/chatbotstart/ChatBotStart";
 import GlobalStyles from "./styles/GlobalStyles";
 import { DarkModeProvider } from "./context/DarkModeContext";
-import { BrowserRouter, Navigate, replace, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import ChatBotApp from "./features/chatbotapp/ChatBotApp";
 
 const Container = styled.div`

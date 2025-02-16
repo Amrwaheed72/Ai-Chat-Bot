@@ -110,21 +110,6 @@ function MainChat({ messages, isTyping, chatEndRef }) {
         })}
       </StyledChatWindow>
       <Typing>{isTyping ? "Typing..." : ""}</Typing>
-      {/* <div ref={chatEndRef}></div> */}
-      {/* <Message type="prompt">
-        How Are u<Span>15.3.30</Span>
-      </Message> */}
-      {/* <Message type='response'>
-        How Are u 
-        <Span>15.3.00</Span>
-      </Message> */}
-
-      {/* <Message type="prompt">
-        Hi, how are you? <Span>12:30:51 PM</Span>
-      </Message>
-      <Message type="response">
-        Hello, I am good. How can I assist you today? <Span>12:30:52 PM</Span>
-      </Message> */}
     </StyledMainChat>
   );
 }

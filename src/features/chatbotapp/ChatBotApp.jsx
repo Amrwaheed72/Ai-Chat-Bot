@@ -10,8 +10,7 @@ const StyledChatApp = styled.div`
   display: flex;
 `;
 
-const API_KEY =
-import.meta.env.VITE_DEEPSEEK_API_KEY;
+const API_KEY = import.meta.env.VITE_DEEPSEEK_API_KEY;
 
 function ChatBotApp() {
   const [chats, setChats] = useState([]);
@@ -185,6 +184,7 @@ function ChatBotApp() {
         handleDeleteChat={handleDeleteChat}
       />
       <ChatWindow
+        setInputValue={setInputValue}
         isTyping={isTyping}
         sendMessage={sendMessage}
         messages={messages}

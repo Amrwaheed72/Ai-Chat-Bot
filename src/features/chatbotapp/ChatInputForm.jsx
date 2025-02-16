@@ -2,6 +2,8 @@ import { useState } from "react";
 import { IoSendSharp } from "react-icons/io5";
 import { MdEmojiEmotions } from "react-icons/md";
 import styled from "styled-components";
+import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
 
 const FormMessage = styled.form`
   width: 60%;
@@ -10,6 +12,7 @@ const FormMessage = styled.form`
   align-items: center;
   box-shadow: 0 -0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   border-radius: 3rem;
+  position: relative;
 `;
 const StyledInput = styled.input`
   height: 100%;
@@ -36,8 +39,20 @@ const SpecialStyledIcon = styled.div`
   display: flex;
   justify-content: center;
 `;
+const PickerContainer = styled.div`
+position: absolute;
+bottom: 7rem;
+left: 8rem;
+`;
 
-function ChatInputForm({ inputValue, handleInputChanges, sendMessage }) {
+function ChatInputForm({
+  inputValue,
+  handleInputChanges,
+  sendMessage,
+  handleEmojiSelect,
+  setShowEmojiPicker,
+  showEmojiPicker,
+}) {
   function handleKeyDown(e) {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -51,7 +66,15 @@ function ChatInputForm({ inputValue, handleInputChanges, sendMessage }) {
       }}
     >
       <SpecialStyledIcon>
-        <MdEmojiEmotions size="3rem" />
+        <MdEmojiEmotions
+          size="3rem"
+          onClick={() => setShowEmojiPicker((prev) => !prev)}
+        />
+      {showEmojiPicker && (
+        <PickerContainer>
+          <Picker data={data} onEmojiSelect={handleEmojiSelect} />
+        </PickerContainer>
+      )}
       </SpecialStyledIcon>
       <StyledInput
         value={inputValue}
@@ -59,12 +82,10 @@ function ChatInputForm({ inputValue, handleInputChanges, sendMessage }) {
         onKeyDown={handleKeyDown}
         type="text"
         placeholder="Type a message..."
+        onFocus={()=>setShowEmojiPicker(false)}
       ></StyledInput>
       <SpecialStyledIcon>
-        <IoSendSharp
-          size="3rem"
-          onClick={sendMessage}
-        />
+        <IoSendSharp size="3rem" onClick={sendMessage} />
       </SpecialStyledIcon>
     </FormMessage>
   );

@@ -3,7 +3,7 @@ import DarkModeToggle from "../../ui/DarkModeToggle";
 import styled from "styled-components";
 import { GoArrowRight } from "react-icons/go";
 import { CiMenuBurger } from "react-icons/ci";
-import { useState } from "react";
+import { useChatApp } from "../../context/ChatAppProvider";
 
 const StyledChatWindowHeader = styled.div`
   width: 100%;
@@ -40,7 +40,8 @@ display: none;
   }
 `;
 
-function ChatWindowHeader({handleVisibilty}) {
+function ChatWindowHeader() {
+  const {handleVisibilty}=useChatApp()
   const navigate = useNavigate();
   return (
     <StyledChatWindowHeader>

@@ -4,6 +4,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import ChatBotApp from "./features/chatbotapp/ChatBotApp";
+import { ChatAppProvider } from "./context/ChatAppProvider";
 
 const Container = styled.div`
   width: 100%;
@@ -14,18 +15,20 @@ const Container = styled.div`
 `;
 function App() {
   return (
-    <DarkModeProvider>
-      <Container>
-        <GlobalStyles />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<ChatBotStart />} />
-            <Route path="main" element={<ChatBotApp />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </BrowserRouter>
-      </Container>
-    </DarkModeProvider>
+    <ChatAppProvider>
+      <DarkModeProvider>
+        <Container>
+          <GlobalStyles />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<ChatBotStart />} />
+              <Route path="main" element={<ChatBotApp />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </BrowserRouter>
+        </Container>
+      </DarkModeProvider>
+    </ChatAppProvider>
   );
 }
 

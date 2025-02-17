@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { IoSendSharp } from "react-icons/io5";
 import { MdEmojiEmotions } from "react-icons/md";
 import styled from "styled-components";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
+import { useChatApp } from "../../context/ChatAppProvider";
 
 const FormMessage = styled.form`
   width: 60%;
@@ -52,20 +52,22 @@ const PickerContainer = styled.div`
   }
 `;
 
-function ChatInputForm({
-  inputValue,
-  handleInputChanges,
-  sendMessage,
-  handleEmojiSelect,
-  setShowEmojiPicker,
-  showEmojiPicker,
-}) {
+function ChatInputForm() {
+  const {
+    inputValue,
+    handleInputChanges,
+    sendMessage,
+    handleEmojiSelect,
+    setShowEmojiPicker,
+    showEmojiPicker,
+  } = useChatApp();
   function handleKeyDown(e) {
     if (e.key === "Enter") {
       e.preventDefault();
       sendMessage();
     }
   }
+
   return (
     <FormMessage
       onSubmit={(e) => {

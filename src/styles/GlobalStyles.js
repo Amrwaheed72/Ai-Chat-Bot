@@ -1,6 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
 :root {
 
 &, &.light-mode{
@@ -184,6 +194,12 @@ const GlobalStyles = createGlobalStyle`
 
   /* Creating animations for dark mode */
   transition: background-color 0.3s, border 0.3s;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 html {

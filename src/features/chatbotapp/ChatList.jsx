@@ -1,7 +1,7 @@
 import { HiPencilSquare, HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import ChatListItem from "./ChatListItem";
-
+import { useChatApp } from "../../context/ChatAppProvider";
 const StyledChatList = styled.div`
   width: 18%;
   height: 100%;
@@ -22,9 +22,10 @@ const StyledChatList = styled.div`
       props.type === "show" ? "translateX(0)" : "translateX(-100%)"};
     transition: transform 0.3s ease-in-out;
   }
-  @media (max-width:500px ) {
-    width: 40%;
-}
+
+  @media (max-width: 500px) {
+    width: 40%; /* Ensures it covers full width on smaller screens */
+  }
 `;
 
 const StyledListHeader = styled.div`
@@ -65,15 +66,8 @@ const HideStyledIcon = styled.div`
   }
 `;
 
-function ChatList({
-  handleVisibilty,
-  showChatList,
-  chats,
-  createNewChat,
-  activeChat,
-  handleSelectChat,
-  handleDeleteChat,
-}) {
+function ChatList() {
+  const { handleVisibilty, showChatList, chats, createNewChat } = useChatApp();
   return (
     <StyledChatList type={showChatList ? "show" : ""}>
       <StyledListHeader>
@@ -86,14 +80,7 @@ function ChatList({
         </HideStyledIcon>
       </StyledListHeader>
       {chats.map((chat) => (
-        <ChatListItem
-          handleDeleteChat={handleDeleteChat}
-          handleSelectChat={handleSelectChat}
-          activeChat={activeChat}
-          chat={chat}
-          key={chat.id}
-          index={chat.id}
-        />
+        <ChatListItem chat={chat} key={chat.id} index={chat.id} />
       ))}
     </StyledChatList>
   );

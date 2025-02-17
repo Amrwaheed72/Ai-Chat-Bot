@@ -1,5 +1,6 @@
 import { FaRegCircleXmark } from "react-icons/fa6";
 import styled from "styled-components";
+import { useChatApp } from "../../context/ChatAppProvider";
 
 const StyledChatListItem = styled.div`
   cursor: pointer;
@@ -30,12 +31,10 @@ const StyledIcon = styled.div`
 function ChatListItem({
   chat,
   index,
-  activeChat,
-  handleSelectChat,
-  handleDeleteChat,
 }) {
-  const { id, messages, displayId } = chat;
-  // console.log(id);
+  const {activeChat,handleDeleteChat,handleSelectChat}=useChatApp()
+  const { id, displayId } = chat;
+
   return (
     <StyledChatListItem
       type={index === activeChat ? "active" : ""}

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useChatApp } from "../../context/ChatAppProvider";
 
 const Message = styled.div`
   max-width: 80%;
@@ -7,17 +8,14 @@ const Message = styled.div`
   color: var(--color-slate-100);
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
 
-  /* Position messages dynamically based on the type */
   align-self: ${({ type }) => (type === "prompt" ? "flex-end" : "flex-start")};
   text-align: ${({ type }) => (type === "prompt" ? "right" : "left")};
 
-  /* Dynamic background colors */
   background: ${({ type }) =>
     type === "prompt"
       ? "linear-gradient(110deg, var(--color-neutral-600), var(--color-neutral-800))"
       : "linear-gradient(110deg, var(--color-neutral-800), var(--color-neutral-600))"};
 
-  /* Dynamic border-radius */
   border-radius: ${({ type }) =>
     type === "prompt" ? "3rem 0 3rem 3rem" : "0rem 3rem 3rem 3rem"};
 `;
@@ -87,13 +85,14 @@ const StyledMainChat = styled.div`
   margin: 0 auto;
   background-color: var(--color-neutral-950);
   overflow: auto;
-  @media (max-width:900px ) {
+  @media (max-width: 900px) {
     width: 80%;
   }
 `;
 
-function MainChat({ messages, isTyping, chatEndRef }) {
+function MainChat() {
   // const { text, type, timestamp } = messages;
+  const { messages, isTyping, chatEndRef } = useChatApp();
   return (
     <StyledMainChat>
       <StyledChatWindow>

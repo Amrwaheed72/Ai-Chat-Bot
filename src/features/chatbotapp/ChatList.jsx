@@ -69,6 +69,9 @@ const HideStyledIcon = styled.div`
   }
 `;
 const StyledIconGroup = styled.div`
+display: flex;
+width: 100%;
+justify-content: space-between;
   @media (max-width: 900px) {
     margin-top: 3rem;
     width: 100%;

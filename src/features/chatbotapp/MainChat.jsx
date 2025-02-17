@@ -4,6 +4,7 @@ import { useChatApp } from "../../context/ChatAppProvider";
 const Message = styled.div`
   max-width: 80%;
   padding: 2rem;
+  margin: 0.5rem;
   font-size: 1.4rem;
   color: var(--color-slate-100);
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);

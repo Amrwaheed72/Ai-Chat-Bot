@@ -17,20 +17,19 @@ const H1 = styled.h1`
   letter-spacing: 0.1rem;
   margin: 0 2rem;
   color: var(--color-grey-600);
-  @media (max-width:900px ) {
+  @media (max-width: 900px) {
     padding-left: 5rem;
   }
 `;
 
 const StyledIcon = styled.div`
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   cursor: pointer;
   margin-right: 2rem;
 `;
 const MenuStyledIcon = styled.div`
-display: none;
+  display: none;
   @media (max-width: 900px) {
-    width: 100%;
     font-size: 2.7rem;
     cursor: pointer;
     margin-left: 1.7rem;
@@ -39,9 +38,14 @@ display: none;
     top: 2.5rem;
   }
 `;
+const StyledIconGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+`;
 
 function ChatWindowHeader() {
-  const {handleVisibilty}=useChatApp()
+  const { handleVisibilty } = useChatApp();
   const navigate = useNavigate();
   return (
     <StyledChatWindowHeader>
@@ -49,10 +53,12 @@ function ChatWindowHeader() {
       <MenuStyledIcon onClick={handleVisibilty}>
         <CiMenuBurger />
       </MenuStyledIcon>
-      <DarkModeToggle />
-      <StyledIcon onClick={() => navigate("/")}>
-        <GoArrowRight size="3rem" stroke="var(--color-grey-600)" />
-      </StyledIcon>
+      <StyledIconGroup>
+        <DarkModeToggle />
+        <StyledIcon onClick={() => navigate("/")}>
+          <GoArrowRight size="3rem" stroke="var(--color-grey-600)" />
+        </StyledIcon>
+      </StyledIconGroup>
     </StyledChatWindowHeader>
   );
 }

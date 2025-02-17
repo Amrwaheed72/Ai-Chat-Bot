@@ -9,9 +9,9 @@ const ButtonIcon = styled.button`
   padding: 0.6rem;
   border-radius: var(--border-radius-sm);
   transition: all 0.2s;
-  position: absolute;
-  top: 1.9rem;
-  right: 7rem;
+  /* position: absolute; */
+  /* top: 1.9rem;
+  right: 3rem; */
 
   &:hover {
     background-color: var(--color-grey-100);

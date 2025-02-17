@@ -6,12 +6,12 @@ function Logo() {
   //   background: transparent;
   // `
   const Img = styled.img`
-    width: 10rem;
+    width: 9rem;
     height: auto;
-    border-radius: 5rem;
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
+    border-radius: 50%;
+    /* position: absolute; */
+      /* top: 1rem;
+      left: 1rem; */
   `;
   return (
       <Img src="amrblackandwhite.jpg" />

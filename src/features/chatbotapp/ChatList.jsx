@@ -52,7 +52,7 @@ const H2 = styled.h2`
 const StyledIcon = styled.div`
   font-size: 2rem;
   cursor: pointer;
-  margin-right: 2rem;
+  margin-right: 0rem;
   @media (max-width: 900px) {
     /* margin-right: 5rem; */
   }
@@ -60,9 +60,21 @@ const StyledIcon = styled.div`
 const HideStyledIcon = styled.div`
   display: none;
   @media (max-width: 900px) {
-    font-size: 2rem;
+    font-size: 3rem;
     cursor: pointer;
     display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
+`;
+const StyledIconGroup = styled.div`
+  @media (max-width: 900px) {
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 
@@ -71,10 +83,12 @@ function ChatList() {
   return (
     <StyledChatList type={showChatList ? "show" : ""}>
       <StyledListHeader>
-        <H2>Chat List</H2>
-        <StyledIcon>
-          <HiPencilSquare size="2rem" onClick={() => createNewChat("")} />
-        </StyledIcon>
+        <StyledIconGroup>
+          <H2>Chat List</H2>
+          <StyledIcon>
+            <HiPencilSquare size="2rem" onClick={() => createNewChat("")} />
+          </StyledIcon>
+        </StyledIconGroup>
         <HideStyledIcon onClick={handleVisibilty}>
           <HiXMark />
         </HideStyledIcon>
